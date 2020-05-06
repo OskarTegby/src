@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <cmath>
 #include <algorithm>
 
 // Struct for resources and state
