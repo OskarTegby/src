@@ -1,0 +1,17 @@
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/CMakeFiles/raytracer.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/CMakeFiles/install/local.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/CMakeFiles/install.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/CMakeFiles/list_install_components.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/glfw/CMakeFiles/install/local.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/glfw/CMakeFiles/install.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/glfw/CMakeFiles/edit_cache.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/glfw/CMakeFiles/rebuild_cache.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/glfw/CMakeFiles/list_install_components.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/glfw/src/CMakeFiles/rebuild_cache.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/glfw/src/CMakeFiles/glfw.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/glfw/src/CMakeFiles/install/local.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/glfw/src/CMakeFiles/install.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/glfw/src/CMakeFiles/edit_cache.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/out/build/x64-Debug/glfw/src/CMakeFiles/list_install_components.dir

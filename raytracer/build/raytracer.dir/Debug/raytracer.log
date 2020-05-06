@@ -1,0 +1,13 @@
+﻿  raytracing.cpp
+C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\utils2.h(62,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\utils2.h(65,38): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\utils2.h(79,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\utils2.h(91,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\utils2.h(186,47): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\utils2.h(336,47): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\utils2.h(272,22): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\utils2.h(283,27): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\utils2.h(297,27): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\utils2.h(311,27): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\raytracing.cpp(18,12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  raytracer.vcxproj -> C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\build\Debug\raytracer.exe

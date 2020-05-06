@@ -1,0 +1,10 @@
+^C:\USERS\MAJAA\DOCUMENTS\STUDIER\COMPUTER_GRAPHICS\PROJECT\ASSIGNMENT4_RAYTRACER\EXTERNAL\GLFW\SRC\CMAKELISTS.TXT
+setlocal
+C:\Users\majaa\Documents\Studier\Computer_Graphics\cmake-3.14.0-win64-x64\cmake-3.14.0-win64-x64\bin\cmake.exe -SC:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer -BC:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/build --check-stamp-file C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/build/glfw/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

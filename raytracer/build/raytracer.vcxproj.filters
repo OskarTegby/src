@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\src\raytracing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glew\src\glew.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\lodepng\lodepng.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\imgui\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\imgui\imgui_demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\imgui\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\imgui\imgui_impl_glfw_gl3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9221C947-D4DE-3D9F-A56D-EC172C8F7AD2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

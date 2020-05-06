@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\input.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\monitor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\win32_init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\win32_monitor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\win32_time.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\win32_tls.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\win32_window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\winmm_joystick.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\wgl_context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\raytracer\build\glfw\src\glfw_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\include\GLFW\glfw3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\include\GLFW\glfw3native.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\win32_platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\win32_tls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\winmm_joystick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\wgl_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\majaa\Documents\Studier\Computer_Graphics\Project\assignment4_raytracer\external\glfw\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{AAD5E0DB-0248-3737-B275-E5A92D801DB6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9221C947-D4DE-3D9F-A56D-EC172C8F7AD2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

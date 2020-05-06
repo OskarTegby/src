@@ -1,0 +1,8 @@
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/build/CMakeFiles/raytracer.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/build/CMakeFiles/INSTALL.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/build/glfw/CMakeFiles/INSTALL.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/build/glfw/CMakeFiles/ALL_BUILD.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/build/glfw/src/CMakeFiles/glfw.dir
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/raytracer/build/glfw/src/CMakeFiles/INSTALL.dir

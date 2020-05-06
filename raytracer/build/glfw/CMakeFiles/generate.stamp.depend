@@ -1,0 +1,16 @@
+# CMake generation dependency list for this directory.
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/external/glfw/CMake/modules/CMakePackageConfigHelpers.cmake
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/external/glfw/CMakeLists.txt
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/external/glfw/src/glfw3.pc.in
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/external/glfw/src/glfw3Config.cmake.in
+C:/Users/majaa/Documents/Studier/Computer_Graphics/Project/assignment4_raytracer/external/glfw/src/glfw_config.h.in
+C:/Users/majaa/Documents/Studier/Computer_Graphics/cmake-3.14.0-win64-x64/cmake-3.14.0-win64-x64/share/cmake-3.14/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Users/majaa/Documents/Studier/Computer_Graphics/cmake-3.14.0-win64-x64/cmake-3.14.0-win64-x64/share/cmake-3.14/Modules/CMakeParseArguments.cmake
+C:/Users/majaa/Documents/Studier/Computer_Graphics/cmake-3.14.0-win64-x64/cmake-3.14.0-win64-x64/share/cmake-3.14/Modules/CheckIncludeFile.cmake
+C:/Users/majaa/Documents/Studier/Computer_Graphics/cmake-3.14.0-win64-x64/cmake-3.14.0-win64-x64/share/cmake-3.14/Modules/CheckLibraryExists.cmake
+C:/Users/majaa/Documents/Studier/Computer_Graphics/cmake-3.14.0-win64-x64/cmake-3.14.0-win64-x64/share/cmake-3.14/Modules/CheckSymbolExists.cmake
+C:/Users/majaa/Documents/Studier/Computer_Graphics/cmake-3.14.0-win64-x64/cmake-3.14.0-win64-x64/share/cmake-3.14/Modules/FindOpenGL.cmake
+C:/Users/majaa/Documents/Studier/Computer_Graphics/cmake-3.14.0-win64-x64/cmake-3.14.0-win64-x64/share/cmake-3.14/Modules/FindPackageHandleStandardArgs.cmake
+C:/Users/majaa/Documents/Studier/Computer_Graphics/cmake-3.14.0-win64-x64/cmake-3.14.0-win64-x64/share/cmake-3.14/Modules/FindPackageMessage.cmake
+C:/Users/majaa/Documents/Studier/Computer_Graphics/cmake-3.14.0-win64-x64/cmake-3.14.0-win64-x64/share/cmake-3.14/Modules/FindThreads.cmake
+C:/Users/majaa/Documents/Studier/Computer_Graphics/cmake-3.14.0-win64-x64/cmake-3.14.0-win64-x64/share/cmake-3.14/Modules/WriteBasicConfigVersionFile.cmake
