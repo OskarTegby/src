@@ -211,12 +211,6 @@ void moveTrackball(Context *ctx, int x, int y)
     }
 }
 
-void scrollCallback(GLFWwindow* window, double xoffset, double yoffset) {
-    zoomFactor += yoffset / 100.0f;
-    if (zoomFactor < 0) zoomFactor = 0;
-    if (zoomFactor * fovy > M_PI && projectionToggle == 1) zoomFactor = M_PI / fovy;
-}
-
 void errorCallback(int /*error*/, const char* description)
 {
     std::cerr << description << std::endl;
@@ -304,7 +298,6 @@ int main(void)
     glfwSetMouseButtonCallback(ctx.window, mouseButtonCallback);
     glfwSetCursorPosCallback(ctx.window, cursorPosCallback);
     glfwSetFramebufferSizeCallback(ctx.window, resizeCallback);
-    glfwSetScrollCallback(ctx.window, scrollCallback);
 
     // Load OpenGL functions
     glewExperimental = true;
