@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <cmath>
 #include <algorithm>
 
 // Struct for resources and state
@@ -181,6 +182,13 @@ void display(Context &ctx)
     showGui(ctx);
 }
 
+void scrollCallback(GLFWwindow* window, double xoffset, double yoffset) {
+    /* Why does the model flip when the zoom factor times the field of view pi equals pi? */
+    zoomFactor += yoffset / 100.0f;
+    if (zoomFactor < 0) zoomFactor = 0;
+    if (zoomFactor * fovy > M_PI && projectionToggle == 1) zoomFactor = M_PI / fovy;
+}
+
 void reloadShaders(Context *ctx)
 {
     glDeleteProgram(ctx->program);
@@ -297,6 +305,7 @@ int main(void)
     glfwSetMouseButtonCallback(ctx.window, mouseButtonCallback);
     glfwSetCursorPosCallback(ctx.window, cursorPosCallback);
     glfwSetFramebufferSizeCallback(ctx.window, resizeCallback);
+    glfwSetScrollCallback(ctx.window, scrollCallback);
 
     // Load OpenGL functions
     glewExperimental = true;
