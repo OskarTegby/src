@@ -18,6 +18,18 @@ float frand(void) {
     return random;
 }
 
+float squared_length(glm::vec3 p) {
+    return sqrt(p[0]*p[0] + p[1]*p[1] + p[2]*p[2]);
+}
+
+glm::vec3 random_in_unit_sphere() {
+    glm::vec3 p;
+    do {
+        p = glm::vec3(2.0*frand(), 2.0*frand(), 2.0*frand()) - glm::vec3(1, 1, 1);
+    } while (squared_length(p) >= 1.0);
+    return p;
+}
+
 namespace rt {
 
 // Store scene (world) in a global variable for convenience
@@ -79,9 +91,9 @@ glm::vec3 color(RTContext &rtx, const Ray &r, int max_bounces)
 
     HitRecord rec;
     if (hit_world(r, 0.0f, 9999.0f, rec)) {
-        rec.normal = glm::normalize(rec.normal);  // Always normalise before use!
+        rec.normal = glm::normalize(rec.normal) + random_in_unit_sphere();  // Always normalise before use!
         if (rtx.show_normals) {
-            return rec.normal * 0.5f + 0.5f;
+            return 0.5f*color(rtx, Ray(rec.p, rec.normal-rec.p), max_bounces - 1);
         }
 
         // Implement lighting for materials here
