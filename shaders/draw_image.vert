@@ -4,6 +4,8 @@
 
 out vec2 v_texcoord;
 
+uniform mat4 viewProjection;
+
 void main()
 {
     v_texcoord = vec2(gl_VertexID % 2, gl_VertexID / 2) * 2.0;

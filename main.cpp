@@ -22,6 +22,9 @@
 #include <cmath>
 #include <algorithm>
 
+float zoomFactor = 1.0f;
+float fovy = 2.0f;
+
 // Struct for resources and state
 struct Context {
     int width;
@@ -127,7 +130,7 @@ void drawImage(Context &ctx)
     // Activate program and pass uniform for texture unit
     glUseProgram(ctx.program);
     glUniform1i(glGetUniformLocation(ctx.program, "u_texture"), 0);
-
+    
     // Draw single triangle (without any vertex buffers)
     glBindVertexArray(ctx.defaultVAO);
     glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -164,6 +167,10 @@ void showGui(Context &ctx)
 
 void display(Context &ctx)
 {
+    float aspectRatio = 1.0f; // It's a square.
+    float zNear = 0.1f;
+    float zFar = 10.0f;
+
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -171,10 +178,17 @@ void display(Context &ctx)
     glm::mat4 trackball = trackballGetRotationMatrix(ctx.trackball);
     glm::vec3 eye = glm::mat3(trackball) * glm::vec3(0.0f, 0.0f, 2.0f);
     ctx.rtx.view = glm::lookAt(eye, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
     if (ctx.trackball.tracking) {
         rt::resetAccumulation(ctx.rtx);
     }
-
+    
+    glm::mat4 view = glm::lookAt(eye, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    glm::mat4 projection = glm::perspective(fovy * zoomFactor, aspectRatio, zNear, zFar);
+    glm::mat4 viewProjection = projection * view;
+    
+    glUniformMatrix4fv(glGetUniformLocation(program, "viewProjection"), 1, GL_FALSE, &viewProjection[0][0]);
+    
     // Update and draw ray tracing image
     updateRayTracing(ctx);
     drawImage(ctx);
@@ -186,7 +200,7 @@ void scrollCallback(GLFWwindow* window, double xoffset, double yoffset) {
     /* Why does the model flip when the zoom factor times the field of view pi equals pi? */
     zoomFactor += yoffset / 100.0f;
     if (zoomFactor < 0) zoomFactor = 0;
-    if (zoomFactor * fovy > M_PI && projectionToggle == 1) zoomFactor = M_PI / fovy;
+    if (zoomFactor * fovy > M_PI) zoomFactor = M_PI / fovy;
 }
 
 void reloadShaders(Context *ctx)
