@@ -187,7 +187,7 @@ void display(Context &ctx)
     glm::mat4 projection = glm::perspective(fovy * zoomFactor, aspectRatio, zNear, zFar);
     glm::mat4 viewProjection = projection * view;
     
-    glUniformMatrix4fv(glGetUniformLocation(program, "viewProjection"), 1, GL_FALSE, &viewProjection[0][0]);
+    glUniformMatrix4fv(glGetUniformLocation(ctx.program, "viewProjection"), 1, GL_FALSE, &viewProjection[0][0]);
     
     // Update and draw ray tracing image
     updateRayTracing(ctx);
