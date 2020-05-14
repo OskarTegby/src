@@ -25,6 +25,7 @@
 float zoomFactor = 1.0f;
 float fovy = 2.0f;
 
+
 // Struct for resources and state
 struct Context {
     int width;
@@ -151,6 +152,13 @@ void showGui(Context &ctx)
     if (ImGui::Checkbox("Show normals", &ctx.rtx.show_normals)) {
         rt::resetAccumulation(ctx.rtx);
     }
+    if (ImGui::Checkbox("Antialiasing", &ctx.rtx.anti_aliasing)) {
+        rt::resetAccumulation(ctx.rtx);
+    }
+
+    if (ImGui::Checkbox("Gamma correction", &ctx.rtx.gamma_correction)) {
+        rt::resetAccumulation(ctx.rtx);
+    }
     // Add more settings and parameters here
     // ...
 
@@ -195,14 +203,14 @@ void display(Context &ctx)
 
     showGui(ctx);
 }
-/*
+
 void scrollCallback(GLFWwindow* window, double xoffset, double yoffset) {
     // Why does the model flip when the zoom factor times the field of view pi equals pi? 
     zoomFactor += yoffset / 100.0f;
     if (zoomFactor < 0) zoomFactor = 0;
-    if (zoomFactor * fovy > M_PI) zoomFactor = M_PI / fovy;
+    //if (zoomFactor * fovy > M_PI) zoomFactor = M_PI / fovy;
 }
-*/
+
 
 void reloadShaders(Context *ctx)
 {
@@ -320,7 +328,7 @@ int main(void)
     glfwSetMouseButtonCallback(ctx.window, mouseButtonCallback);
     glfwSetCursorPosCallback(ctx.window, cursorPosCallback);
     glfwSetFramebufferSizeCallback(ctx.window, resizeCallback);
-    //glfwSetScrollCallback(ctx.window, scrollCallback);
+    glfwSetScrollCallback(ctx.window, scrollCallback);
 
     // Load OpenGL functions
     glewExperimental = true;

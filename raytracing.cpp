@@ -189,10 +189,15 @@ void updateLine(RTContext &rtx, int y)
     // You can try to parallelise this loop by uncommenting this line:
     #pragma omp parallel for schedule(dynamic)
     for (int x = 0; x < nx; ++x) {
-        float u = float(x + frand()) / float(nx);
-        float v = float(y + frand()) / float(ny);
-        //float u = (float(x) + 0.5f) / float(nx);
-        //float v = (float(y) + 0.5f) / float(ny);
+        float u, v;
+        if (rtx.anti_aliasing) {
+             u = (x + frand()) / float(nx);
+             v = float(y + frand()) / float(ny);
+        }
+        else {
+            u = (float(x) + 0.5f) / float(nx);
+            v = (float(y) + 0.5f) / float(ny);
+        }
         Ray r(origin, lower_left_corner + u * horizontal + v * vertical);
         r.A = glm::vec3(world_from_view * glm::vec4(r.A, 1.0f));
         r.B = glm::vec3(world_from_view * glm::vec4(r.B, 0.0f));
