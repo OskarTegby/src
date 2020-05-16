@@ -87,60 +87,29 @@ bool hit_world(const Ray &r, float t_min, float t_max, HitRecord &rec)
 //
 
 // See Chapter 7 in the "Ray Tracing in a Weekend" book
-glm::vec3 color(RTContext &rtx, const Ray &r, int max_bounces) 
+glm::vec3 color(RTContext& rtx, const Ray& r, int max_bounces)
 {
     if (max_bounces < 0) return glm::vec3(0.0f);
 
     HitRecord rec;
-    if (hit_world(r, 0.0f, 9999.0f, rec)) {
-        rec.normal = glm::normalize(rec.normal) + random_in_unit_sphere();  // Always normalise before use!
+    if (hit_world(r, 0.001f, 9999.0f, rec)) {
+        rec.normal = glm::normalize(rec.normal);  // Always normalise before use!
+        glm::vec3 target = rec.p + rec.normal + random_in_unit_sphere();
         if (rtx.show_normals) {
-            return 0.5f*color(rtx, Ray(rec.p, rec.normal-rec.p), max_bounces - 1);
+            return rec.normal * 0.5f + 0.5f;
         }
+        return 0.5f * color(rtx, Ray(rec.p, target - rec.p), max_bounces - 1);
 
-        /*
-    else
-    {
-        glm::vec3 unit_direction = glm::vec3 unit_vector(r.direction());
-        float t = 0.5 * (unit_direction.y + 1.0);
-        return glm::vec3(1.0 - t) * glm::vec3(1.0, 1.0, 1.0) + t * glm::vec3(0.5, 0.7, 1.0);
-    }
-        */
-       /* void write_color(std::ostream & out,color pixel_color, int samples_per_pixel) {
-            auto r = pixel_color.x();
-            auto g = pixel_color.y();
-            auto b = pixel_color.z();
-            // Divide the color total by the number of samples and gamma-correct for gamma=2.0.
-            auto scale = 1.0 / samples_per_pixel;
-            r = sqrt(scale * r);
-            g = sqrt(scale * g);
-            b = sqrt(scale * b);
-
-            // Write the translated [0,255] value of each color component.
-            out << static_cast<int>(256 * clamp(r, 0.0, 0.999)) << ' '
-                << static_cast<int>(256 * clamp(g, 0.0, 0.999)) << ' '
-                << static_cast<int>(256 * clamp(b, 0.0, 0.999)) << '\n';
-        }
-        */
         // Implement lighting for materials here
         // ...
-        return glm::vec3(0.0f);
+        //return glm::vec3(0.0f);
     }
-    
-    
-
-
-
-
-
-
-
-
     // If no hit, return sky color
     glm::vec3 unit_direction = glm::normalize(r.direction());
     float t = 0.5f * (unit_direction.y + 1.0f);
     return (1.0f - t) * rtx.ground_color + t * rtx.sky_color;
 }
+
 
 // MODIFY THIS FUNCTION!
 void setupScene(RTContext &rtx, const char *filename)
