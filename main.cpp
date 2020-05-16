@@ -159,6 +159,17 @@ void showGui(Context &ctx)
     if (ImGui::Checkbox("Gamma correction", &ctx.rtx.gamma_correction)) {
         rt::resetAccumulation(ctx.rtx);
     }
+
+    //if (ImGui::SliderFloat("Diffuse scatter probability", &ctx.rtx.diffuse_prob, 0, 1)) {
+    //    rt::resetAccumulation(ctx.rtx);
+    //}
+
+    if (ImGui::SliderFloat("Metal fuzz", &ctx.rtx.fuzz, 0, 1)) {
+        rt::resetAccumulation(ctx.rtx);
+    }
+    //if (ImGui::Checkbox("Metal", &ctx.rtx.metal)) {
+    //    rt::resetAccumulation(ctx.rtx);
+    //}
     // Add more settings and parameters here
     // ...
 

@@ -93,32 +93,52 @@ glm::vec3 color(RTContext& rtx, const Ray& r, int max_bounces)
 
     HitRecord rec;
     if (hit_world(r, 0.001f, 9999.0f, rec)) {
-        rec.normal = glm::normalize(rec.normal);  // Always normalise before use!
-        glm::vec3 target = rec.p + rec.normal + random_in_unit_sphere();
+        rec.normal = glm::normalize(rec.normal);
         if (rtx.show_normals) {
             return rec.normal * 0.5f + 0.5f;
         }
-        return 0.5f * color(rtx, Ray(rec.p, target - rec.p), max_bounces - 1);
 
-        // Implement lighting for materials here
-        // ...
-        //return glm::vec3(0.0f);
+        //Diffuse
+        if (rec.material == 0) {
+            glm::vec3 target = rec.p + rec.normal + random_in_unit_sphere();
+            return  rec.color * color(rtx, Ray(rec.p, target - rec.p), max_bounces - 1);// 0.5f * color(rtx, Ray(rec.p, target - rec.p), max_bounces - 1);
+        }
+
+        //Metal
+        if (rec.material==1) {
+            glm::vec3 reflected = glm::reflect(glm::normalize(r.direction()), rec.normal);
+            Ray scattered = Ray(rec.p, reflected + rtx.fuzz* random_in_unit_sphere());
+            glm::vec3 attenuation = rec.color;
+            if (glm::dot(scattered.direction(), rec.normal) > 0) {
+                return attenuation * color(rtx, scattered, max_bounces - 1);
+            }
+            else {
+                return glm::vec3(0, 0, 0);
+            }
+            
+        }
+
+
+
     }
     // If no hit, return sky color
-    glm::vec3 unit_direction = glm::normalize(r.direction());
-    float t = 0.5f * (unit_direction.y + 1.0f);
-    return (1.0f - t) * rtx.ground_color + t * rtx.sky_color;
+    else {
+        glm::vec3 unit_direction = glm::normalize(r.direction());
+        float t = 0.5f * (unit_direction.y + 1.0f);
+        return (1.0f - t) * rtx.ground_color + t * rtx.sky_color;
+    }
 }
 
 
 // MODIFY THIS FUNCTION!
 void setupScene(RTContext &rtx, const char *filename)
 {
-    g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f);
+
+    g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f, 0, glm::vec3(0.1, 0.6, 0.1));
     g_scene.spheres = {
-        Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f),
-        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f),
-        Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f),
+        Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.9,0.2,0.5)),
+        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.7,0.6,0.8)),
+        Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.2,0.3,0.1)),
     };
 
     //Boxes
@@ -160,7 +180,7 @@ void updateLine(RTContext &rtx, int y)
     for (int x = 0; x < nx; ++x) {
         float u, v;
         if (rtx.anti_aliasing) {
-             u = (x + frand()) / float(nx);
+             u = float(x + frand()) / float(nx);
              v = float(y + frand()) / float(ny);
         }
         else {
