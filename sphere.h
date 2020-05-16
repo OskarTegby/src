@@ -12,6 +12,7 @@ public:
 
     glm::vec3 center;
     float radius;
+    int material; // 0:diffuse, 1:metal
     glm::vec3 color;
 };
 
