@@ -134,7 +134,7 @@ glm::vec3 color(RTContext& rtx, const Ray& r, int max_bounces)
 void setupScene(RTContext &rtx, const char *filename)
 {
 
-    g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f, 0, glm::vec3(0.1, 0.6, 0.1));
+    g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f, 0, rtx.ground_color);
     g_scene.spheres = {
         Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.9,0.2,0.5)),
         Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.7,0.6,0.8)),

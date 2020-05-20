@@ -146,9 +146,9 @@ void showGui(Context &ctx)
     if (ImGui::ColorEdit3("Sky color", &ctx.rtx.sky_color[0])) {
         rt::resetAccumulation(ctx.rtx);
     }
-    if (ImGui::ColorEdit3("Ground color", &ctx.rtx.ground_color[0])) {
-        rt::resetAccumulation(ctx.rtx);
-    }
+    //if (ImGui::ColorEdit3("Ground color", &ctx.rtx.ground_color[0])) {
+    //    rt::resetAccumulation(ctx.rtx);
+    //}
     if (ImGui::Checkbox("Show normals", &ctx.rtx.show_normals)) {
         rt::resetAccumulation(ctx.rtx);
     }
@@ -207,7 +207,7 @@ void display(Context &ctx)
     glm::mat4 viewProjection = projection * view;
     
     glUniformMatrix4fv(glGetUniformLocation(ctx.program, "viewProjection"), 1, GL_FALSE, &viewProjection[0][0]);
-    
+    glUniform1i(glGetUniformLocation(ctx.program, "gamma_toggle"), ctx.rtx.gamma_correction);
     // Update and draw ray tracing image
     updateRayTracing(ctx);
     drawImage(ctx);
