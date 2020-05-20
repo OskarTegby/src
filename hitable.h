@@ -13,6 +13,7 @@ struct HitRecord {
     glm::vec3 normal;
     int material;
     glm::vec3 color;
+    float ref_index;
 };
 
 class Hitable {

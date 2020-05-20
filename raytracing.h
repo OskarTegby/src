@@ -20,7 +20,7 @@ struct RTContext {
     float epsilon = 2e-4f;
     bool anti_aliasing = true;
     glm::mat4 view = glm::mat4(1.0f);
-    glm::vec3 ground_color = glm::vec3(0.1f, 1.0f, 0.1f);
+    glm::vec3 ground_color = glm::vec3(0.1f, 0.5f, 0.1f);
     glm::vec3 sky_color = glm::vec3(0.5f, 0.7f, 1.0f);
     bool show_normals = false;
     bool gamma_correction = true;

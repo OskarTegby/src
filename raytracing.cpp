@@ -30,6 +30,26 @@ glm::vec3 random_in_unit_sphere() {
     return p;
 }
 
+bool refract(const glm::vec3& v, const glm::vec3& n, float ni_over_nt, glm::vec3& refracted) {
+    glm::vec3 uv = glm::normalize(v);
+    float dt = glm::dot(uv, n);
+    float discriminant = 1.0 - ni_over_nt * ni_over_nt * (1 - dt * dt);
+    if (discriminant > 0) {
+        refracted = ni_over_nt * (uv - n * dt) - n * sqrt(discriminant);
+        return true;
+    }
+    else
+        return false;
+}
+
+    float schlick(float cosine, float ref_idx) {
+        float r0 = (1 - ref_idx) / (1 + ref_idx);
+        r0 = r0 * r0;
+        return r0 + (1 - r0) * pow((1 - cosine), 5);
+    }
+
+
+
 namespace rt {
 
 // Store scene (world) in a global variable for convenience
@@ -115,10 +135,45 @@ glm::vec3 color(RTContext& rtx, const Ray& r, int max_bounces)
             else {
                 return glm::vec3(0, 0, 0);
             }
-            
         }
 
+        //Di-electric 
+        if (rec.material == 2) {
+            glm::vec3 outward_normal;
+            glm::vec3 reflected = glm::reflect(r.direction(), rec.normal);
+            float ni_over_nt;
+            glm::vec3 attenuation = glm::vec3(1.0, 1.0, 1.0);
+            glm::vec3 refracted;
+            float reflect_prob;
+            float cosine;
+            Ray scattered;
 
+
+            if (glm::dot(r.direction(), rec.normal) > 0) {
+                outward_normal = -rec.normal;
+                ni_over_nt = rec.ref_index;
+                cosine = rec.ref_index * glm::dot(r.direction(), rec.normal) / r.direction().length();
+            }
+            else {
+                outward_normal = rec.normal;
+                ni_over_nt = 1.0 / rec.ref_index;
+                cosine = -glm::dot(r.direction(), rec.normal) / r.direction().length();
+            }
+            if (refract(r.direction(), outward_normal, ni_over_nt, refracted)) {
+                reflect_prob = schlick(cosine, rec.ref_index);
+            }
+            else {
+                reflect_prob = 0.1;
+            }
+            if (frand() < reflect_prob) {
+                scattered = Ray(rec.p, reflected);
+            }
+            else {
+                scattered = Ray(rec.p, refracted);
+            }
+
+            return attenuation * color(rtx, scattered, max_bounces - 1);
+        }
 
     }
     // If no hit, return sky color
@@ -134,11 +189,11 @@ glm::vec3 color(RTContext& rtx, const Ray& r, int max_bounces)
 void setupScene(RTContext &rtx, const char *filename)
 {
 
-    g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f, 0, rtx.ground_color);
+    g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f, 0, rtx.ground_color, 0.0);
     g_scene.spheres = {
-        Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.9,0.2,0.5)),
-        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.7,0.6,0.8)),
-        Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.2,0.3,0.1)),
+        Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.1,0.9,0.9), 0.0),
+        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.9,0.1,0.1),0.0),
+        Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f, 2, glm::vec3(0.4,0.3,0.5),1.5),
     };
 
     //Boxes
