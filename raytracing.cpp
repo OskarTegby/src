@@ -42,11 +42,11 @@ bool refract(const glm::vec3& v, const glm::vec3& n, float ni_over_nt, glm::vec3
         return false;
 }
 
-    float schlick(float cosine, float ref_idx) {
-        float r0 = (1 - ref_idx) / (1 + ref_idx);
-        r0 = r0 * r0;
-        return r0 + (1 - r0) * pow((1 - cosine), 5);
-    }
+float schlick(float cosine, float ref_idx) {
+    float r0 = (1 - ref_idx) / (1 + ref_idx);
+    r0 = r0 * r0;
+    return r0 + (1 - r0) * pow((1 - cosine), 5);
+}
 
 
 
@@ -160,20 +160,17 @@ glm::vec3 color(RTContext& rtx, const Ray& r, int max_bounces)
                 cosine = -glm::dot(r.direction(), rec.normal) / r.direction().length();
             }
             if (refract(r.direction(), outward_normal, ni_over_nt, refracted)) {
-                reflect_prob = schlick(cosine, rec.ref_index);
+               scattered = Ray(rec.p, refracted);
             }
             else {
-                reflect_prob = 0.1;
-            }
-            if (frand() < reflect_prob) {
                 scattered = Ray(rec.p, reflected);
+                return glm::vec3(0, 0, 0);
             }
-            else {
-                scattered = Ray(rec.p, refracted);
-            }
-
+        
             return attenuation * color(rtx, scattered, max_bounces - 1);
+       
         }
+        return rec.normal * 0.5f + 0.5f;
 
     }
     // If no hit, return sky color
@@ -188,15 +185,14 @@ glm::vec3 color(RTContext& rtx, const Ray& r, int max_bounces)
 // MODIFY THIS FUNCTION!
 void setupScene(RTContext &rtx, const char *filename)
 {
-
     g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f, 0, rtx.ground_color, 0.0);
     g_scene.spheres = {
         Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.1,0.9,0.9), 0.0),
         Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.9,0.1,0.1),0.0),
-        Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f, 2, glm::vec3(0.4,0.3,0.5),1.5),
+        Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f, 2, glm::vec3(0.4,0.3,0.5), 1.5),
     };
 
-    //Boxes
+    ////Boxes
     //g_scene.boxes = {
     //    Box(glm::vec3(0.0f, -0.25f, 0.0f), glm::vec3(0.25f)),
     //    Box(glm::vec3(1.0f, -0.25f, 0.0f), glm::vec3(0.25f)),
