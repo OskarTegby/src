@@ -163,19 +163,15 @@ glm::vec3 color(RTContext& rtx, const Ray& r, int max_bounces)
                 cosine = -glm::dot(r.direction(), rec.normal) / r.direction().length();
             }
             if (refract(r.direction(), outward_normal, ni_over_nt, refracted)) {
-                reflect_prob = schlick(cosine, rec.ref_index);
+               scattered = Ray(rec.p, refracted);
             }
             else {
-                reflect_prob = 1.0;
-            }
-            if (frand() < reflect_prob) {
                 scattered = Ray(rec.p, reflected);
+                return glm::vec3(0, 0, 0);
             }
-            else {
-                scattered = Ray(rec.p, refracted);
-            }
-
+        
             return attenuation * color(rtx, scattered, max_bounces - 1);
+       
         }
 
         return rec.normal * 0.5f + 0.5f;
