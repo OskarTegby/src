@@ -193,10 +193,10 @@ void setupScene(RTContext &rtx, const char *filename)
     g_scene.spheres = {
         //Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.1,0.9,0.9), 0.0), // Middle back
         Sphere(glm::vec3(1.1f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.9,0.1,0.1),0.0), // Right back
-        Sphere(glm::vec3(-1.2f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.4,0.3,0.5), 1.5), // Left back
-        Sphere(glm::vec3(-0.6f, -0.3f, 0.8f), 0.2f, 2, glm::vec3(0.4,0.3,0.5), 1.5), // Right front
+        Sphere(glm::vec3(-1.2f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.7,0.0,0.5), 1.5), // Left back
+        Sphere(glm::vec3(-0.6f, -0.3f, 0.8f), 0.2f, 2, glm::vec3(0.4,0.3,0.9), 1.5), // Right front
         Sphere(glm::vec3(-0.1f, -0.4f, 1.4f), 0.1f, 0, glm::vec3(0.9,0.9,0.2), 1.5), // Middle front
-        Sphere(glm::vec3(0.4f, -0.35f, 1.0f), 0.15f, 1, glm::vec3(0.4,0.3,0.5), 1.5), // Left front
+        Sphere(glm::vec3(0.4f, -0.35f, 1.0f), 0.15f, 1, glm::vec3(0.0,0.9,0.9), 1.5), // Left front
 
 
     };
