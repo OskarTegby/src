@@ -59,6 +59,7 @@ struct Scene {
     std::vector<Box> boxes;
     std::vector<Triangle> mesh;
     Box mesh_bbox;
+    Sphere bounding_sphere;
 } g_scene;
 
 bool hit_world(const Ray &r, float t_min, float t_max, HitRecord &rec)
@@ -86,11 +87,13 @@ bool hit_world(const Ray &r, float t_min, float t_max, HitRecord &rec)
             rec = temp_rec;
         }
     }
-    for (int i = 0; i < g_scene.mesh.size(); ++i) {
-        if (g_scene.mesh[i].hit(r, t_min, closest_so_far, temp_rec)) {
-            hit_anything = true;
-            closest_so_far = temp_rec.t;
-            rec = temp_rec;
+    if (g_scene.bounding_sphere.hit(r, t_min, closest_so_far, temp_rec)) {
+        for (int i = 0; i < g_scene.mesh.size(); ++i) {
+            if (g_scene.mesh[i].hit(r, t_min, closest_so_far, temp_rec)) {
+                hit_anything = true;
+                closest_so_far = temp_rec.t;
+                rec = temp_rec;
+            }
         }
     }
     return hit_anything;
@@ -170,6 +173,7 @@ glm::vec3 color(RTContext& rtx, const Ray& r, int max_bounces)
             return attenuation * color(rtx, scattered, max_bounces - 1);
        
         }
+
         return rec.normal * 0.5f + 0.5f;
 
     }
@@ -187,11 +191,16 @@ void setupScene(RTContext &rtx, const char *filename)
 {
     g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f, 0, rtx.ground_color, 0.0);
     g_scene.spheres = {
-        Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.1,0.9,0.9), 0.0),
-        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.9,0.1,0.1),0.0),
-        Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f, 2, glm::vec3(0.4,0.3,0.5), 1.5),
-    };
+        //Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.1,0.9,0.9), 0.0), // Middle back
+        Sphere(glm::vec3(1.1f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.9,0.1,0.1),0.0), // Right back
+        Sphere(glm::vec3(-1.2f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.4,0.3,0.5), 1.5), // Left back
+        Sphere(glm::vec3(-0.6f, -0.3f, 0.8f), 0.2f, 2, glm::vec3(0.4,0.3,0.5), 1.5), // Right front
+        Sphere(glm::vec3(-0.1f, -0.4f, 1.4f), 0.1f, 0, glm::vec3(0.9,0.9,0.2), 1.5), // Middle front
+        Sphere(glm::vec3(0.4f, -0.35f, 1.0f), 0.15f, 1, glm::vec3(0.4,0.3,0.5), 1.5), // Left front
 
+
+    };
+    g_scene.bounding_sphere = Sphere(glm::vec3(0.0f, 0.1f, 0.0f), 0.9, 3, glm::vec3(0.1, 0.9, 0.9), 0.0);
     ////Boxes
     //g_scene.boxes = {
     //    Box(glm::vec3(0.0f, -0.25f, 0.0f), glm::vec3(0.25f)),
@@ -200,18 +209,18 @@ void setupScene(RTContext &rtx, const char *filename)
     //};
 
     //Bunny
-    //OBJMesh mesh;
-    //objMeshLoad(mesh, filename);
-    //g_scene.mesh.clear();
-    //for (int i = 0; i < mesh.indices.size(); i += 3) {
-    //    int i0 = mesh.indices[i + 0];
-    //    int i1 = mesh.indices[i + 1];
-    //    int i2 = mesh.indices[i + 2];
-    //    glm::vec3 v0 = mesh.vertices[i0] + glm::vec3(0.0f, 0.135f, 0.0f);
-    //    glm::vec3 v1 = mesh.vertices[i1] + glm::vec3(0.0f, 0.135f, 0.0f);
-    //    glm::vec3 v2 = mesh.vertices[i2] + glm::vec3(0.0f, 0.135f, 0.0f);
-    //    g_scene.mesh.push_back(Triangle(v0, v1, v2));
-    //}
+    OBJMesh mesh;
+    objMeshLoad(mesh, filename);
+    g_scene.mesh.clear();
+    for (int i = 0; i < mesh.indices.size(); i += 3) {
+        int i0 = mesh.indices[i + 0];
+        int i1 = mesh.indices[i + 1];
+        int i2 = mesh.indices[i + 2];
+        glm::vec3 v0 = mesh.vertices[i0] + glm::vec3(0.0f, 0.135f, 0.0f);
+        glm::vec3 v1 = mesh.vertices[i1] + glm::vec3(0.0f, 0.135f, 0.0f);
+        glm::vec3 v2 = mesh.vertices[i2] + glm::vec3(0.0f, 0.135f, 0.0f);
+        g_scene.mesh.push_back(Triangle(v0, v1, v2));
+    }
 }
 
 // MODIFY THIS FUNCTION!
