@@ -191,25 +191,12 @@ void setupScene(RTContext &rtx, const char *filename)
 {
     g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f, 0, rtx.ground_color, 0.0);
     g_scene.spheres = {
-<<<<<<< HEAD
-        Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.1,0.9,0.9), 0.0),
-        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.9,0.1,0.1),0.0),
-        Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f, 2, glm::vec3(0.4,0.3,0.5), 1.5),
-        
-
-       
-
-    };
-=======
         //Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.1,0.9,0.9), 0.0), // Middle back
         Sphere(glm::vec3(1.1f, 0.0f, 0.0f), 0.5f, 0, glm::vec3(0.9,0.1,0.1),0.0), // Right back
         Sphere(glm::vec3(-1.2f, 0.0f, 0.0f), 0.5f, 1, glm::vec3(0.7,0.0,0.5), 1.5), // Left back
         Sphere(glm::vec3(-0.6f, -0.3f, 0.8f), 0.2f, 2, glm::vec3(0.4,0.3,0.9), 1.5), // Right front
         Sphere(glm::vec3(-0.1f, -0.4f, 1.4f), 0.1f, 0, glm::vec3(0.9,0.9,0.2), 1.5), // Middle front
         Sphere(glm::vec3(0.4f, -0.35f, 1.0f), 0.15f, 1, glm::vec3(0.0,0.9,0.9), 1.5), // Left front
-
->>>>>>> a8bf20365946cf615a213a91694d9d59dfd59e5a
-
     };
     g_scene.bounding_sphere = Sphere(glm::vec3(0.0f, 0.1f, 0.0f), 0.9, 3, glm::vec3(0.1, 0.9, 0.9), 0.0);
     ////Boxes
@@ -219,11 +206,8 @@ void setupScene(RTContext &rtx, const char *filename)
     //    Box(glm::vec3(-1.0f, -0.25f, 0.0f), glm::vec3(0.25f)),
     //};
 
-<<<<<<< HEAD
+
    // Bunny
-=======
-    //Bunny
->>>>>>> a8bf20365946cf615a213a91694d9d59dfd59e5a
     OBJMesh mesh;
     objMeshLoad(mesh, filename);
     g_scene.mesh.clear();
