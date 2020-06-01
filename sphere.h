@@ -35,7 +35,7 @@ bool Sphere::hit(const Ray &r, float t_min, float t_max, HitRecord &rec) const
             rec.normal = (rec.p - center) / radius;
             rec.material = material;
             rec.color = color;
-            rec.ref_index;
+            rec.ref_index = ref_index;
             return true;
         }
     }
